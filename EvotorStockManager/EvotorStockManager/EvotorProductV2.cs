@@ -22,12 +22,10 @@ namespace EvotorStockManager
         public string description { get; set; }
         public string article_number { get; set; }
         public string parent_id { get; set; }
-        public string created_at { get; set; }
-        public string updated_at { get; set; }
 
-        public EvotorProductV2(string name, string code, string article, string description, float price, float cost_price, float quantity)
+        public EvotorProductV2(string id, string name, string code, string article, string description, float price, float cost_price, float quantity, string[] barcodes,string parent_id)
         {
-            this.id = Guid.NewGuid().ToString();
+            this.id = id;
             this.type = "NORMAL";
             this.tax = "NO_TAX";
             this.measure_name = "шт";
@@ -39,6 +37,8 @@ namespace EvotorStockManager
             this.price = price;
             this.cost_price = cost_price;
             this.quantity = quantity;
+            this.barcodes = barcodes;
+            this.parent_id = parent_id;
         }
 
     }

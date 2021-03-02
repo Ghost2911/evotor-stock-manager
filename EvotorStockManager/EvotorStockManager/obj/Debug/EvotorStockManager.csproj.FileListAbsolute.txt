@@ -1,12 +1,7 @@
-C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\EvotorStockManager.exe.config
-C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\EvotorStockManager.exe
-C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\EvotorStockManager.pdb
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\EvotorStockManager.csprojAssemblyReference.cache
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\EvotorStockManager.Properties.Resources.resources
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\EvotorStockManager.csproj.GenerateResource.cache
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\EvotorStockManager.csproj.CoreCompileInputs.cache
-C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\EvotorStockManager.exe
-C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\EvotorStockManager.pdb
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\System.Data.SQLite.dll
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\System.Data.SQLite.pdb
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\System.Data.SQLite.dll.config
@@ -22,6 +17,16 @@ C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\System.Buffers.dll
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\EvotorStockManager.exe.config
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\EvotorStockManager.TaskForm.resources
 C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\EvotorStockManager.CreateProduct.resources
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\EvotorStockManager.GroupPicker.resources
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\Управление складом.exe.config
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\Управление складом.exe.config
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\Управление складом.exe.manifest
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\Управление складом.application
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\Управление складом.exe
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\bin\Debug\Управление складом.pdb
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\Управление складом.exe.manifest
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\Управление складом.application
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\Управление складом.exe
+C:\Users\Ghost2911\source\repos\EvotorStockManager\EvotorStockManager\obj\Debug\Управление складом.pdb

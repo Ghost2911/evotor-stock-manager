@@ -86,9 +86,10 @@ namespace EvotorStockManager
             request.ContentType = "application/vnd.evotor.v2+json";
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-            {
+            { 
+                string barcodes = JsonConvert.SerializeObject(product.barcodes);
                 string js = "{\"code\":\"" + product.code + "\",\"name\":\"" + product.name + "\",\"allow_to_sell\":true,"+ "\"type\":\"NORMAL\",\"quantity\":" + product.quantity + ",\"measure_name\":\"шт\",\"tax\":\"NO_VAT\",\"price\":" + product.price +
-                            ",\"cost_price\":" + product.cost_price + ",\"description\":\"" + product.description + "\"" + ",\"article_number\":\"" + product.article_number + "\""  /*",\"barCodes\":[\"" + row["CLASSIFICATION_CODE"] + "\"]"*/ + "}";
+                            ",\"cost_price\":" + product.cost_price + ",\"description\":\"" + product.description + "\"" + ",\"article_number\":\"" + product.article_number + "\",\"barcodes\":" + barcodes + "}";
                 streamWriter.Write(js);
             }
 
@@ -134,8 +135,10 @@ namespace EvotorStockManager
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
-                string js = "{\"code\":\"" + product.code + "\",\"name\":\"" + product.name +"\",\"id\":\"" + product.id + "\",\"allow_to_sell\":true," + "\"type\":\"NORMAL\",\"quantity\":" + product.quantity + ",\"measure_name\":\"шт\",\"tax\":\"NO_VAT\",\"price\":" + product.price +
-                            ",\"cost_price\":" + product.cost_price + ",\"description\":\"" + product.description + "\"" + ",\"article_number\":\"" + product.article_number + "\""  /*",\"barCodes\":[\"" + row["CLASSIFICATION_CODE"] + "\"]"*/ + "}";
+                string barcodes = JsonConvert.SerializeObject(product.barcodes);
+                string js = "{\"code\":\"" + product.code + "\",\"name\":\"" + product.name + "\",\"allow_to_sell\":true," + "\"type\":\"NORMAL\",\"quantity\":" + product.quantity + ",\"measure_name\":\"шт\",\"tax\":\"NO_VAT\",\"price\":" + product.price +
+                            ",\"cost_price\":" + product.cost_price + ",\"description\":\"" + product.description + "\"" + ",\"article_number\":\"" + product.article_number + "\",\"barcodes\":" + barcodes + ((product.parent_id == String.Empty) ?"": (",\"parent_id\":\"" + product.parent_id+"\""));
+                js += "}";
                 streamWriter.Write(js);
             }
 
@@ -172,7 +175,6 @@ namespace EvotorStockManager
 
         static public int Add(DataTable dt)
         {
-        
             var path = "https://api.evotor.ru/api/v1/inventories/stores/"+STORE_ID+"/products";
             var request = WebRequest.Create(path);
             request.Headers["Authorization"] = TOKEN;

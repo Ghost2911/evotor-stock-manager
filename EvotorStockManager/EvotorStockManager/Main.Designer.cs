@@ -38,6 +38,8 @@ namespace EvotorStockManager
             this.dgvMain = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.article_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.measure_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,14 +49,19 @@ namespace EvotorStockManager
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.article_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.parent_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.parent_id = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.allow_to_sell = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.pnlNavigation = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnSearchGroup = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tbSearchBarcode = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbIconSearch = new System.Windows.Forms.PictureBox();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.btnUpdateInfo = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.btnGroups = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -62,20 +69,27 @@ namespace EvotorStockManager
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnDeleteCloud = new System.Windows.Forms.Button();
             this.btnAddApi = new System.Windows.Forms.Button();
-            this.tbSearch = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pbLoading = new System.Windows.Forms.PictureBox();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.tslProductCount = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
+            this.pnlNavigation.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIconSearch)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGetData
             // 
             this.btnGetData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetData.Location = new System.Drawing.Point(263, 58);
+            this.btnGetData.Location = new System.Drawing.Point(263, 47);
             this.btnGetData.Name = "btnGetData";
             this.btnGetData.Size = new System.Drawing.Size(117, 22);
             this.btnGetData.TabIndex = 2;
@@ -89,19 +103,21 @@ namespace EvotorStockManager
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.dgvMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvMain.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.dgvMain.BackgroundColor = System.Drawing.Color.LightBlue;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Aire Exterior", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMain.ColumnHeadersHeight = 40;
             this.dgvMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.code,
+            this.description,
+            this.article_number,
             this.id,
             this.type,
             this.measure_name,
@@ -111,8 +127,6 @@ namespace EvotorStockManager
             this.price,
             this.tax,
             this.quantity,
-            this.description,
-            this.article_number,
             this.parent_id,
             this.allow_to_sell});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -124,38 +138,57 @@ namespace EvotorStockManager
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvMain.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMain.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvMain.GridColor = System.Drawing.Color.CornflowerBlue;
             this.dgvMain.Location = new System.Drawing.Point(0, 0);
             this.dgvMain.MultiSelect = false;
             this.dgvMain.Name = "dgvMain";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
+            this.dgvMain.RowHeadersWidth = 50;
+            this.dgvMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvMain.RowTemplate.Height = 35;
             this.dgvMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMain.Size = new System.Drawing.Size(1205, 550);
             this.dgvMain.TabIndex = 1;
             this.dgvMain.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_CellEndEdit);
+            this.dgvMain.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvMain_DataError);
             // 
             // name
             // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.name.DataPropertyName = "name";
             this.name.Frozen = true;
             this.name.HeaderText = "Наименование";
             this.name.Name = "name";
-            this.name.Width = 147;
+            this.name.Width = 600;
             // 
             // code
             // 
             this.code.DataPropertyName = "code";
             this.code.HeaderText = "Код";
             this.code.Name = "code";
-            this.code.Width = 64;
+            this.code.Width = 59;
+            // 
+            // description
+            // 
+            this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.description.DataPropertyName = "description";
+            this.description.HeaderText = "Описание";
+            this.description.Name = "description";
+            this.description.Width = 300;
+            // 
+            // article_number
+            // 
+            this.article_number.DataPropertyName = "article_number";
+            this.article_number.HeaderText = "Артикул";
+            this.article_number.Name = "article_number";
+            this.article_number.Width = 90;
             // 
             // id
             // 
@@ -163,7 +196,7 @@ namespace EvotorStockManager
             this.id.HeaderText = "id";
             this.id.Name = "id";
             this.id.Visible = false;
-            this.id.Width = 46;
+            this.id.Width = 47;
             // 
             // type
             // 
@@ -171,7 +204,7 @@ namespace EvotorStockManager
             this.type.HeaderText = "Тип";
             this.type.Name = "type";
             this.type.Visible = false;
-            this.type.Width = 61;
+            this.type.Width = 58;
             // 
             // measure_name
             // 
@@ -179,7 +212,7 @@ namespace EvotorStockManager
             this.measure_name.HeaderText = "Ед.изм";
             this.measure_name.Name = "measure_name";
             this.measure_name.Visible = false;
-            this.measure_name.Width = 88;
+            this.measure_name.Width = 81;
             // 
             // created_at
             // 
@@ -187,7 +220,7 @@ namespace EvotorStockManager
             this.created_at.HeaderText = "created_at";
             this.created_at.Name = "created_at";
             this.created_at.Visible = false;
-            this.created_at.Width = 111;
+            this.created_at.Width = 104;
             // 
             // updated_at
             // 
@@ -195,21 +228,21 @@ namespace EvotorStockManager
             this.updated_at.HeaderText = "updated_at";
             this.updated_at.Name = "updated_at";
             this.updated_at.Visible = false;
-            this.updated_at.Width = 116;
+            this.updated_at.Width = 108;
             // 
             // cost_price
             // 
             this.cost_price.DataPropertyName = "cost_price";
             this.cost_price.HeaderText = "Цена закупки";
             this.cost_price.Name = "cost_price";
-            this.cost_price.Width = 135;
+            this.cost_price.Width = 127;
             // 
             // price
             // 
             this.price.DataPropertyName = "price";
             this.price.HeaderText = "Цена продажи";
             this.price.Name = "price";
-            this.price.Width = 144;
+            this.price.Width = 132;
             // 
             // tax
             // 
@@ -217,35 +250,22 @@ namespace EvotorStockManager
             this.tax.HeaderText = "Налог";
             this.tax.Name = "tax";
             this.tax.Visible = false;
-            this.tax.Width = 81;
+            this.tax.Width = 73;
             // 
             // quantity
             // 
             this.quantity.DataPropertyName = "quantity";
             this.quantity.HeaderText = "Количество";
             this.quantity.Name = "quantity";
-            this.quantity.Width = 125;
-            // 
-            // description
-            // 
-            this.description.DataPropertyName = "description";
-            this.description.HeaderText = "Описание";
-            this.description.Name = "description";
-            this.description.Width = 108;
-            // 
-            // article_number
-            // 
-            this.article_number.DataPropertyName = "article_number";
-            this.article_number.HeaderText = "Артикул";
-            this.article_number.Name = "article_number";
-            this.article_number.Width = 97;
+            this.quantity.Width = 112;
             // 
             // parent_id
             // 
-            this.parent_id.DataPropertyName = "parent_id";
-            this.parent_id.HeaderText = "ID Группы";
+            this.parent_id.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.parent_id.HeaderText = "Группа";
             this.parent_id.Name = "parent_id";
-            this.parent_id.Width = 109;
+            this.parent_id.ReadOnly = true;
+            this.parent_id.Width = 62;
             // 
             // allow_to_sell
             // 
@@ -254,74 +274,162 @@ namespace EvotorStockManager
             this.allow_to_sell.Name = "allow_to_sell";
             this.allow_to_sell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.allow_to_sell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.allow_to_sell.Width = 106;
+            this.allow_to_sell.Visible = false;
+            this.allow_to_sell.Width = 98;
+            // 
+            // pnlNavigation
+            // 
+            this.pnlNavigation.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlNavigation.Controls.Add(this.panel4);
+            this.pnlNavigation.Controls.Add(this.panel1);
+            this.pnlNavigation.Controls.Add(this.btnUpdateInfo);
+            this.pnlNavigation.Controls.Add(this.btnEdit);
+            this.pnlNavigation.Controls.Add(this.btnDelete);
+            this.pnlNavigation.Controls.Add(this.btnAdd);
+            this.pnlNavigation.Controls.Add(this.panel3);
+            this.pnlNavigation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlNavigation.Location = new System.Drawing.Point(0, 0);
+            this.pnlNavigation.Name = "pnlNavigation";
+            this.pnlNavigation.Size = new System.Drawing.Size(1205, 135);
+            this.pnlNavigation.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.Controls.Add(this.btnSearchGroup);
+            this.panel4.Controls.Add(this.pictureBox3);
+            this.panel4.Location = new System.Drawing.Point(0, 17);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(386, 52);
+            this.panel4.TabIndex = 24;
+            // 
+            // btnSearchGroup
+            // 
+            this.btnSearchGroup.BackColor = System.Drawing.Color.Azure;
+            this.btnSearchGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSearchGroup.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearchGroup.Location = new System.Drawing.Point(49, 9);
+            this.btnSearchGroup.Name = "btnSearchGroup";
+            this.btnSearchGroup.Size = new System.Drawing.Size(326, 35);
+            this.btnSearchGroup.TabIndex = 6;
+            this.btnSearchGroup.Tag = "";
+            this.btnSearchGroup.Text = "ВСЕ ТОВАРЫ";
+            this.btnSearchGroup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearchGroup.UseVisualStyleBackColor = false;
+            this.btnSearchGroup.Click += new System.EventHandler(this.btnSearchGroup_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(11, 9);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnEdit);
-            this.panel1.Controls.Add(this.btnGroups);
-            this.panel1.Controls.Add(this.btnDelete);
-            this.panel1.Controls.Add(this.btnAdd);
-            this.panel1.Controls.Add(this.panel3);
+            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.Controls.Add(this.tbSearchBarcode);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pbIconSearch);
             this.panel1.Controls.Add(this.tbSearch);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 75);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1205, 135);
-            this.panel1.TabIndex = 1;
+            this.panel1.Size = new System.Drawing.Size(741, 52);
+            this.panel1.TabIndex = 23;
             // 
-            // label1
+            // tbSearchBarcode
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Aire Exterior", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 27);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "ПОИСК";
+            this.tbSearchBarcode.BackColor = System.Drawing.Color.Azure;
+            this.tbSearchBarcode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbSearchBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSearchBarcode.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.tbSearchBarcode.Location = new System.Drawing.Point(450, 12);
+            this.tbSearchBarcode.Name = "tbSearchBarcode";
+            this.tbSearchBarcode.Size = new System.Drawing.Size(277, 31);
+            this.tbSearchBarcode.TabIndex = 6;
+            this.tbSearchBarcode.TextChanged += new System.EventHandler(this.tbSearchBarcode_TextChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Lavender;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(405, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pbIconSearch
+            // 
+            this.pbIconSearch.Image = ((System.Drawing.Image)(resources.GetObject("pbIconSearch.Image")));
+            this.pbIconSearch.Location = new System.Drawing.Point(11, 10);
+            this.pbIconSearch.Name = "pbIconSearch";
+            this.pbIconSearch.Size = new System.Drawing.Size(32, 32);
+            this.pbIconSearch.TabIndex = 5;
+            this.pbIconSearch.TabStop = false;
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.BackColor = System.Drawing.Color.Azure;
+            this.tbSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSearch.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.tbSearch.Location = new System.Drawing.Point(51, 12);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(324, 31);
+            this.tbSearch.TabIndex = 4;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged_1);
+            // 
+            // btnUpdateInfo
+            // 
+            this.btnUpdateInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateInfo.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnUpdateInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateInfo.Font = new System.Drawing.Font("Aire Exterior", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnUpdateInfo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUpdateInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateInfo.Image")));
+            this.btnUpdateInfo.Location = new System.Drawing.Point(1155, 7);
+            this.btnUpdateInfo.Name = "btnUpdateInfo";
+            this.btnUpdateInfo.Size = new System.Drawing.Size(46, 37);
+            this.btnUpdateInfo.TabIndex = 22;
+            this.btnUpdateInfo.UseVisualStyleBackColor = false;
+            this.btnUpdateInfo.Click += new System.EventHandler(this.btnUpdateInfo_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnEdit.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Aire Exterior", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnEdit.Location = new System.Drawing.Point(742, 92);
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.Location = new System.Drawing.Point(1030, 76);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(145, 37);
+            this.btnEdit.Size = new System.Drawing.Size(171, 49);
             this.btnEdit.TabIndex = 20;
             this.btnEdit.Text = "Редактировать";
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnGroups
-            // 
-            this.btnGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGroups.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnGroups.Font = new System.Drawing.Font("Aire Exterior", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGroups.Location = new System.Drawing.Point(1036, 92);
-            this.btnGroups.Name = "btnGroups";
-            this.btnGroups.Size = new System.Drawing.Size(157, 37);
-            this.btnGroups.TabIndex = 19;
-            this.btnGroups.Text = "Группы";
-            this.btnGroups.UseVisualStyleBackColor = false;
-            this.btnGroups.Click += new System.EventHandler(this.btnGroups_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnDelete.BackColor = System.Drawing.Color.Crimson;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Aire Exterior", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDelete.Location = new System.Drawing.Point(693, 92);
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.Location = new System.Drawing.Point(736, 76);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(43, 37);
+            this.btnDelete.Size = new System.Drawing.Size(122, 49);
             this.btnDelete.TabIndex = 18;
-            this.btnDelete.Text = "x";
+            this.btnDelete.Text = "Удалить";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -330,28 +438,31 @@ namespace EvotorStockManager
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Aire Exterior", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAdd.Location = new System.Drawing.Point(893, 92);
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(860, 76);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(137, 37);
+            this.btnAdd.Size = new System.Drawing.Size(168, 49);
             this.btnAdd.TabIndex = 17;
             this.btnAdd.Text = "Создать товар";
+            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel3.Controls.Add(this.btnRecreate);
             this.panel3.Controls.Add(this.progressBar);
             this.panel3.Controls.Add(this.btnGetData);
             this.panel3.Controls.Add(this.btnDeleteCloud);
             this.panel3.Controls.Add(this.btnAddApi);
-            this.panel3.Location = new System.Drawing.Point(800, 3);
+            this.panel3.Location = new System.Drawing.Point(452, 6);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(393, 83);
+            this.panel3.Size = new System.Drawing.Size(393, 71);
             this.panel3.TabIndex = 16;
             this.panel3.Visible = false;
             // 
@@ -367,14 +478,14 @@ namespace EvotorStockManager
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(12, 29);
+            this.progressBar.Location = new System.Drawing.Point(12, 25);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(368, 23);
             this.progressBar.TabIndex = 15;
             // 
             // btnDeleteCloud
             // 
-            this.btnDeleteCloud.Location = new System.Drawing.Point(12, 58);
+            this.btnDeleteCloud.Location = new System.Drawing.Point(12, 47);
             this.btnDeleteCloud.Name = "btnDeleteCloud";
             this.btnDeleteCloud.Size = new System.Drawing.Size(120, 22);
             this.btnDeleteCloud.TabIndex = 5;
@@ -383,7 +494,7 @@ namespace EvotorStockManager
             // 
             // btnAddApi
             // 
-            this.btnAddApi.Location = new System.Drawing.Point(138, 58);
+            this.btnAddApi.Location = new System.Drawing.Point(138, 47);
             this.btnAddApi.Name = "btnAddApi";
             this.btnAddApi.Size = new System.Drawing.Size(119, 22);
             this.btnAddApi.TabIndex = 13;
@@ -391,17 +502,9 @@ namespace EvotorStockManager
             this.btnAddApi.UseVisualStyleBackColor = true;
             this.btnAddApi.Click += new System.EventHandler(this.btnAddApi_Click);
             // 
-            // tbSearch
-            // 
-            this.tbSearch.Font = new System.Drawing.Font("Aire Exterior", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSearch.Location = new System.Drawing.Point(89, 92);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(408, 34);
-            this.tbSearch.TabIndex = 4;
-            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
-            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.statusStrip);
             this.panel2.Controls.Add(this.pbLoading);
             this.panel2.Controls.Add(this.dgvMain);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -422,23 +525,46 @@ namespace EvotorStockManager
             this.pbLoading.TabIndex = 21;
             this.pbLoading.TabStop = false;
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslProductCount});
+            this.statusStrip.Location = new System.Drawing.Point(0, 528);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(1205, 22);
+            this.statusStrip.TabIndex = 22;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // tslProductCount
+            // 
+            this.tslProductCount.Name = "tslProductCount";
+            this.tslProductCount.Size = new System.Drawing.Size(0, 17);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1205, 685);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlNavigation);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Main";
+            this.Text = "Управление складом";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
+            this.pnlNavigation.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIconSearch)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -447,20 +573,27 @@ namespace EvotorStockManager
 
         private System.Windows.Forms.Button btnGetData;
         private System.Windows.Forms.DataGridView dgvMain;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Panel pnlNavigation;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnDeleteCloud;
         private System.Windows.Forms.Button btnAddApi;
         private System.Windows.Forms.Button btnRecreate;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnGroups;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.PictureBox pbLoading;
+        private System.Windows.Forms.Button btnUpdateInfo;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pbIconSearch;
+        private System.Windows.Forms.TextBox tbSearchBarcode;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn article_number;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn measure_name;
@@ -470,11 +603,12 @@ namespace EvotorStockManager
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn tax;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn article_number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn parent_id;
+        private System.Windows.Forms.DataGridViewComboBoxColumn parent_id;
         private System.Windows.Forms.DataGridViewCheckBoxColumn allow_to_sell;
-        private System.Windows.Forms.PictureBox pbLoading;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnSearchGroup;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel tslProductCount;
     }
 }
