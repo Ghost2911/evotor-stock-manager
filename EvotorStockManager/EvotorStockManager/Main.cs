@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace EvotorStockManager
         static public List<EvotorProductV2> products = new List<EvotorProductV2>();
         static public List<EvotorProductV2> groups = new List<EvotorProductV2>();
         static public List<string> groupSort;
+        static public int columnFiltered = 0;
 
         public Main()
         {
@@ -77,6 +79,7 @@ namespace EvotorStockManager
             pbLoading.Visible = false;
             pnlNavigation.Visible = true;
             tslProductCount.Text = "Загружено товаров: " + products.Count + "; Групп: " + groups.Count;
+            UpdateSearch(tbSearch.Text);
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
@@ -134,52 +137,75 @@ namespace EvotorStockManager
             }
         }
 
+        /*
+         * ОТКЛЮЧЕНО В СВЯЗИ С МУЛЬТИВЫБОРОМ
+         * 
         private void dgvMain_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             string id = dgvMain.Rows[e.RowIndex].Cells["id"].Value.ToString();
             EvotorProductV2 editProduct = products.Where(x => x.id == id).First();
             EvotorAPI.UpdateProduct(editProduct);
         }
+        */
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             CreateProduct f = new CreateProduct(null);
-            f.ShowDialog();
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            string id = dgvMain.Rows[dgvMain.SelectedRows[0].Index].Cells["id"].Value.ToString();
-            EvotorProductV2 editProduct = products.Where(x => x.id == id).First();
-            CreateProduct f = new CreateProduct(editProduct);
             if (f.ShowDialog() == DialogResult.OK)
             {
                 UpdateSearch(tbSearch.Text);
             }
         }
 
-        private void btnGroups_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            string idGroup = Convert.ToString(dgvMain.SelectedRows[0].Cells["parent_id"].Value);
-            GroupPicker gp = new GroupPicker(idGroup);
-            if (gp.ShowDialog() == DialogResult.OK)
+            if (dgvMain.SelectedRows.Count != 0)
             {
-                ((EvotorProductV2)dgvMain.SelectedRows[0].DataBoundItem).parent_id = gp.idGroup;
-                EvotorAPI.UpdateProduct(((EvotorProductV2)dgvMain.SelectedRows[0].DataBoundItem));
+                if (dgvMain.SelectedRows.Count == 1)
+                {
+                    string id = dgvMain.Rows[dgvMain.SelectedRows[0].Index].Cells["id"].Value.ToString();
+                    EvotorProductV2 editProduct = products.Where(x => x.id == id).First();
+                    CreateProduct f = new CreateProduct(editProduct);
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        UpdateSearch(tbSearch.Text);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования выберите ТОЛЬКО ОДИН товар");
+                }
             }
         }
-
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvMain.SelectedRows.Count != 0)
             {
-                if (DialogResult.Yes == MessageBox.Show("Вы действительно хотите удалить - " + dgvMain.SelectedRows[0].Cells["name"].Value.ToString() + "?", "Подтвержение", MessageBoxButtons.YesNo))
+                if (dgvMain.SelectedRows.Count == 1)
                 {
-                    EvotorAPI.DeleteProduct(dgvMain.SelectedRows[0].Cells["id"].Value.ToString());
-                    EvotorProductV2 delProduct = (EvotorProductV2)dgvMain.SelectedRows[0].DataBoundItem;
-                    products.Remove(delProduct);
-                    dgvMain.DataSource = products;
+                    if (DialogResult.Yes == MessageBox.Show("Вы действительно хотите удалить - " + dgvMain.SelectedRows[0].Cells["name"].Value.ToString() + "?", "Подтвержение", MessageBoxButtons.YesNo))
+                    {
+                        EvotorAPI.DeleteProduct(dgvMain.SelectedRows[0].Cells["id"].Value.ToString());
+                        EvotorProductV2 delProduct = (EvotorProductV2)dgvMain.SelectedRows[0].DataBoundItem;
+                        products.Remove(delProduct);
+                        dgvMain.DataSource = products;
+                    }
+                }
+                else
+                {
+                    if (DialogResult.Yes == MessageBox.Show("Вы действительно хотите удалить " + dgvMain.SelectedRows.Count.ToString() + " шт. товара?", "Подтвержение", MessageBoxButtons.YesNo))
+                    {
+                        foreach (DataGridViewRow dr in dgvMain.SelectedRows)
+                        {
+                            MessageBox.Show(dr.Cells["name"].ToString());
+                            EvotorAPI.DeleteProduct(dr.Cells["id"].Value.ToString());
+                            EvotorProductV2 delProduct = (EvotorProductV2)dgvMain.SelectedRows[0].DataBoundItem;
+                            products.Remove(delProduct);
+                        }
+                        dgvMain.DataSource = products;
+                        UpdateSearch(tbSearch.Text);
+                    }
                 }
             }
         }
@@ -199,14 +225,17 @@ namespace EvotorStockManager
 
         public void UpdateSearch(string text_search)
         {
-            BindingList<EvotorProductV2> filtered;
+            Regex reg_search = new Regex(text_search.Replace("*",@"\w*"), RegexOptions.IgnoreCase);
+
+            SortableBindingList <EvotorProductV2> filtered;
             if (groupSort!=null)
-                filtered = new BindingList<EvotorProductV2>(products.Where(
-                                     p => ((p.name.IndexOf(text_search, StringComparison.OrdinalIgnoreCase) >= 0) || (p.description.IndexOf(text_search, StringComparison.OrdinalIgnoreCase) >= 0))
-                                    && groupSort.Contains(p.parent_id)).OrderBy(p=>p.name).ToList());
+                filtered = new SortableBindingList<EvotorProductV2>(products.Where(
+                                      p => ((reg_search.IsMatch(p.name)) || (reg_search.IsMatch(p.description)))
+                                     && groupSort.Contains(p.parent_id)).OrderBy(p => p.code).ToList());
             else
-                filtered = new BindingList<EvotorProductV2>(products.Where(
-                                    p => (p.name.IndexOf(text_search, StringComparison.OrdinalIgnoreCase) >= 0) || (p.description.IndexOf(text_search, StringComparison.OrdinalIgnoreCase) >= 0)).OrderBy(p => p.name).ToList());
+                filtered = new SortableBindingList<EvotorProductV2>(products.Where(
+                                    p => (reg_search.IsMatch(p.name)) || (reg_search.IsMatch(p.description))).OrderBy(p => p.code).ToList());
+            
             dgvMain.DataSource = filtered;
         }
 
@@ -214,9 +243,7 @@ namespace EvotorStockManager
         {
             if (tbSearchBarcode.TextLength > 2 || tbSearchBarcode.TextLength == 0)
             {
-                BindingList<EvotorProductV2> filtered = new BindingList<EvotorProductV2>(products.Where(
-                                      p => ((p.barcodes != null && p.barcodes.Contains(tbSearchBarcode.Text)) && (p.parent_id.Equals(groupSort)||groupSort==null))).OrderBy(p => p.name).ToList());
-                dgvMain.DataSource = filtered;
+                UpdateSearch(tbSearch.Text);
             }
         }
 
@@ -245,6 +272,11 @@ namespace EvotorStockManager
         private void dgvMain_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
            
+        }
+
+        private void btnDeleteCloud_Click(object sender, EventArgs e)
+        {
+            EvotorAPI.DeleteAll();
         }
     }
 }

@@ -85,11 +85,13 @@ namespace EvotorStockManager
             request.Method = "POST";
             request.ContentType = "application/vnd.evotor.v2+json";
 
+            string barcodes = JsonConvert.SerializeObject(product.barcodes);
+            string js = "{\"code\":\"" + product.code + "\",\"name\":\"" + product.name + "\",\"allow_to_sell\":true," + "\"type\":\"NORMAL\",\"quantity\":" + product.quantity + ",\"measure_name\":\"шт\",\"tax\":\"NO_VAT\",\"price\":" + product.price +
+                            ",\"cost_price\":" + product.cost_price + ",\"description\":\"" + product.description + "\"" + ",\"article_number\":\"" + product.article_number + "\",\"barcodes\":" + barcodes + ((product.parent_id == String.Empty) ? "" : (",\"parent_id\":\"" + product.parent_id + "\""));
+            js += "}";
+
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             { 
-                string barcodes = JsonConvert.SerializeObject(product.barcodes);
-                string js = "{\"code\":\"" + product.code + "\",\"name\":\"" + product.name + "\",\"allow_to_sell\":true,"+ "\"type\":\"NORMAL\",\"quantity\":" + product.quantity + ",\"measure_name\":\"шт\",\"tax\":\"NO_VAT\",\"price\":" + product.price +
-                            ",\"cost_price\":" + product.cost_price + ",\"description\":\"" + product.description + "\"" + ",\"article_number\":\"" + product.article_number + "\",\"barcodes\":" + barcodes + "}";
                 streamWriter.Write(js);
             }
 
@@ -131,14 +133,15 @@ namespace EvotorStockManager
             var request = WebRequest.Create(path);
             request.Headers["Authorization"] = TOKEN;
             request.Method = "PUT";
-            request.ContentType = "application/vnd.evotor.v2+json";
+            request.ContentType = "application/vnd.evotor.v2+json"; 
+            
+            string barcodes = JsonConvert.SerializeObject(product.barcodes);
+            string js = "{\"code\":\"" + product.code + "\",\"name\":\"" + product.name + "\",\"allow_to_sell\":true," + "\"type\":\"NORMAL\",\"quantity\":" + product.quantity + ",\"measure_name\":\"шт\",\"tax\":\"NO_VAT\",\"price\":" + product.price +
+                            ",\"cost_price\":" + product.cost_price + ",\"description\":\"" + product.description + "\"" + ",\"article_number\":\"" + product.article_number + "\",\"barcodes\":" + barcodes + ((product.parent_id == String.Empty) ?"": (",\"parent_id\":\"" + product.parent_id+"\""));
+                js += "}";
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
-                string barcodes = JsonConvert.SerializeObject(product.barcodes);
-                string js = "{\"code\":\"" + product.code + "\",\"name\":\"" + product.name + "\",\"allow_to_sell\":true," + "\"type\":\"NORMAL\",\"quantity\":" + product.quantity + ",\"measure_name\":\"шт\",\"tax\":\"NO_VAT\",\"price\":" + product.price +
-                            ",\"cost_price\":" + product.cost_price + ",\"description\":\"" + product.description + "\"" + ",\"article_number\":\"" + product.article_number + "\",\"barcodes\":" + barcodes + ((product.parent_id == String.Empty) ?"": (",\"parent_id\":\"" + product.parent_id+"\""));
-                js += "}";
                 streamWriter.Write(js);
             }
 

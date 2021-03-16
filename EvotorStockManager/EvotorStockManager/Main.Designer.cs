@@ -29,10 +29,10 @@ namespace EvotorStockManager
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.btnGetData = new System.Windows.Forms.Button();
             this.dgvMain = new System.Windows.Forms.DataGridView();
@@ -70,9 +70,9 @@ namespace EvotorStockManager
             this.btnDeleteCloud = new System.Windows.Forms.Button();
             this.btnAddApi = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pbLoading = new System.Windows.Forms.PictureBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tslProductCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pbLoading = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             this.pnlNavigation.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -82,8 +82,8 @@ namespace EvotorStockManager
             ((System.ComponentModel.ISupportInitialize)(this.pbIconSearch)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.statusStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGetData
@@ -100,18 +100,18 @@ namespace EvotorStockManager
             // dgvMain
             // 
             this.dgvMain.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvMain.BackgroundColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Aire Exterior", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.AppWorkspace;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Aire Exterior", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvMain.ColumnHeadersHeight = 40;
             this.dgvMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
@@ -129,34 +129,33 @@ namespace EvotorStockManager
             this.quantity,
             this.parent_id,
             this.allow_to_sell});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Unicode MS", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMain.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial Unicode MS", 12F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMain.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMain.GridColor = System.Drawing.Color.CornflowerBlue;
             this.dgvMain.Location = new System.Drawing.Point(0, 0);
-            this.dgvMain.MultiSelect = false;
             this.dgvMain.Name = "dgvMain";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvMain.ReadOnly = true;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvMain.RowHeadersWidth = 50;
             this.dgvMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvMain.RowTemplate.Height = 35;
             this.dgvMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMain.Size = new System.Drawing.Size(1205, 550);
             this.dgvMain.TabIndex = 1;
-            this.dgvMain.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_CellEndEdit);
             this.dgvMain.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvMain_DataError);
             // 
             // name
@@ -166,6 +165,7 @@ namespace EvotorStockManager
             this.name.Frozen = true;
             this.name.HeaderText = "Наименование";
             this.name.Name = "name";
+            this.name.ReadOnly = true;
             this.name.Width = 600;
             // 
             // code
@@ -173,6 +173,7 @@ namespace EvotorStockManager
             this.code.DataPropertyName = "code";
             this.code.HeaderText = "Код";
             this.code.Name = "code";
+            this.code.ReadOnly = true;
             this.code.Width = 59;
             // 
             // description
@@ -181,6 +182,7 @@ namespace EvotorStockManager
             this.description.DataPropertyName = "description";
             this.description.HeaderText = "Описание";
             this.description.Name = "description";
+            this.description.ReadOnly = true;
             this.description.Width = 300;
             // 
             // article_number
@@ -188,6 +190,7 @@ namespace EvotorStockManager
             this.article_number.DataPropertyName = "article_number";
             this.article_number.HeaderText = "Артикул";
             this.article_number.Name = "article_number";
+            this.article_number.ReadOnly = true;
             this.article_number.Width = 90;
             // 
             // id
@@ -195,6 +198,7 @@ namespace EvotorStockManager
             this.id.DataPropertyName = "id";
             this.id.HeaderText = "id";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             this.id.Visible = false;
             this.id.Width = 47;
             // 
@@ -203,6 +207,7 @@ namespace EvotorStockManager
             this.type.DataPropertyName = "type";
             this.type.HeaderText = "Тип";
             this.type.Name = "type";
+            this.type.ReadOnly = true;
             this.type.Visible = false;
             this.type.Width = 58;
             // 
@@ -211,6 +216,7 @@ namespace EvotorStockManager
             this.measure_name.DataPropertyName = "measure_name";
             this.measure_name.HeaderText = "Ед.изм";
             this.measure_name.Name = "measure_name";
+            this.measure_name.ReadOnly = true;
             this.measure_name.Visible = false;
             this.measure_name.Width = 81;
             // 
@@ -219,6 +225,7 @@ namespace EvotorStockManager
             this.created_at.DataPropertyName = "created_at";
             this.created_at.HeaderText = "created_at";
             this.created_at.Name = "created_at";
+            this.created_at.ReadOnly = true;
             this.created_at.Visible = false;
             this.created_at.Width = 104;
             // 
@@ -227,6 +234,7 @@ namespace EvotorStockManager
             this.updated_at.DataPropertyName = "updated_at";
             this.updated_at.HeaderText = "updated_at";
             this.updated_at.Name = "updated_at";
+            this.updated_at.ReadOnly = true;
             this.updated_at.Visible = false;
             this.updated_at.Width = 108;
             // 
@@ -235,6 +243,7 @@ namespace EvotorStockManager
             this.cost_price.DataPropertyName = "cost_price";
             this.cost_price.HeaderText = "Цена закупки";
             this.cost_price.Name = "cost_price";
+            this.cost_price.ReadOnly = true;
             this.cost_price.Width = 127;
             // 
             // price
@@ -242,6 +251,7 @@ namespace EvotorStockManager
             this.price.DataPropertyName = "price";
             this.price.HeaderText = "Цена продажи";
             this.price.Name = "price";
+            this.price.ReadOnly = true;
             this.price.Width = 132;
             // 
             // tax
@@ -249,6 +259,7 @@ namespace EvotorStockManager
             this.tax.DataPropertyName = "tax";
             this.tax.HeaderText = "Налог";
             this.tax.Name = "tax";
+            this.tax.ReadOnly = true;
             this.tax.Visible = false;
             this.tax.Width = 73;
             // 
@@ -257,21 +268,24 @@ namespace EvotorStockManager
             this.quantity.DataPropertyName = "quantity";
             this.quantity.HeaderText = "Количество";
             this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
             this.quantity.Width = 112;
             // 
             // parent_id
             // 
+            this.parent_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.parent_id.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.parent_id.HeaderText = "Группа";
             this.parent_id.Name = "parent_id";
             this.parent_id.ReadOnly = true;
-            this.parent_id.Width = 62;
+            this.parent_id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // allow_to_sell
             // 
             this.allow_to_sell.DataPropertyName = "allow_to_sell";
             this.allow_to_sell.HeaderText = "Доступен";
             this.allow_to_sell.Name = "allow_to_sell";
+            this.allow_to_sell.ReadOnly = true;
             this.allow_to_sell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.allow_to_sell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.allow_to_sell.Visible = false;
@@ -464,7 +478,6 @@ namespace EvotorStockManager
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(393, 71);
             this.panel3.TabIndex = 16;
-            this.panel3.Visible = false;
             // 
             // btnRecreate
             // 
@@ -491,6 +504,7 @@ namespace EvotorStockManager
             this.btnDeleteCloud.TabIndex = 5;
             this.btnDeleteCloud.Text = "Удалить облако";
             this.btnDeleteCloud.UseVisualStyleBackColor = true;
+            this.btnDeleteCloud.Click += new System.EventHandler(this.btnDeleteCloud_Click);
             // 
             // btnAddApi
             // 
@@ -513,18 +527,6 @@ namespace EvotorStockManager
             this.panel2.Size = new System.Drawing.Size(1205, 550);
             this.panel2.TabIndex = 2;
             // 
-            // pbLoading
-            // 
-            this.pbLoading.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(227)))), ((int)(((byte)(226)))));
-            this.pbLoading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
-            this.pbLoading.Location = new System.Drawing.Point(0, 0);
-            this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(1205, 550);
-            this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbLoading.TabIndex = 21;
-            this.pbLoading.TabStop = false;
-            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -539,6 +541,18 @@ namespace EvotorStockManager
             // 
             this.tslProductCount.Name = "tslProductCount";
             this.tslProductCount.Size = new System.Drawing.Size(0, 17);
+            // 
+            // pbLoading
+            // 
+            this.pbLoading.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(227)))), ((int)(((byte)(226)))));
+            this.pbLoading.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
+            this.pbLoading.Location = new System.Drawing.Point(0, 0);
+            this.pbLoading.Name = "pbLoading";
+            this.pbLoading.Size = new System.Drawing.Size(1205, 550);
+            this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbLoading.TabIndex = 21;
+            this.pbLoading.TabStop = false;
             // 
             // Main
             // 
@@ -562,9 +576,9 @@ namespace EvotorStockManager
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -590,6 +604,11 @@ namespace EvotorStockManager
         private System.Windows.Forms.PictureBox pbIconSearch;
         private System.Windows.Forms.TextBox tbSearchBarcode;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnSearchGroup;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel tslProductCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn code;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
@@ -605,10 +624,5 @@ namespace EvotorStockManager
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewComboBoxColumn parent_id;
         private System.Windows.Forms.DataGridViewCheckBoxColumn allow_to_sell;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnSearchGroup;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel tslProductCount;
     }
 }

@@ -50,21 +50,34 @@ namespace EvotorStockManager
                 UpdateProductAsync(productEdit);           
                 Main.products.Remove(Main.products.Find(x => x.id == productEdit.id));
                 Main.products.Add(productEdit);
-                
             }
             else
             {
-                productEdit = new EvotorProductV2("", tbName.Text, tbCode.Text, tbArticle.Text, tbDesc.Text, (float)nudPrice.Value, (float)nudCost.Value, (float)nudCount.Value, lbBarcodes.Items.OfType<string>().ToArray(), (btnChooseGroup.Tag == null) ? null : btnChooseGroup.Tag.ToString());
-                CreateProductAsync(productEdit);
+                bool isExist = Main.products.Find(x => x.code == tbCode.Text.ToString()) != null;
+                if (isExist)
+                {
+                    MessageBox.Show("Товар с данным кодом уже существует в базе");
+                    this.DialogResult = DialogResult.None;
+                }
+                else
+                {
+                    productEdit = new EvotorProductV2("", tbName.Text, tbCode.Text, tbArticle.Text, tbDesc.Text, (float)nudPrice.Value, (float)nudCost.Value, (float)nudCount.Value, lbBarcodes.Items.OfType<string>().ToArray(), (btnChooseGroup.Tag == null) ? null : btnChooseGroup.Tag.ToString());
+                    CreateProductAsync(productEdit);
+                }
             }
         }
 
-        public async void CreateProductAsync(EvotorProductV2 prod)
+        public void CreateProductAsync(EvotorProductV2 prod)
         {
-            string id = String.Empty;
-            await Task.Run(() => id = EvotorAPI.CreateProduct(prod));
-            prod.id = id;
-            Main.products.Add(prod);
+            try
+            {
+                prod.id = EvotorAPI.CreateProduct(prod);
+                Main.products.Add(prod);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось добавить продукт. Проверьте интернет-соединение");
+            }
         }
 
         public async void UpdateProductAsync(EvotorProductV2 prod)
