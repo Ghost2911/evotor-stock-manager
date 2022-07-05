@@ -5,3 +5,6 @@
 Для работы необходимо задать следующие переменные в классе EvotorAPI:
 * const string STORE_ID = "ID_вашего_магазина";
 * const string TOKEN = "TOKEN_вашего_магазина";
+![Screenshot](1.png)
+![Screenshot](2.png)
+![Screenshot](3.png)
